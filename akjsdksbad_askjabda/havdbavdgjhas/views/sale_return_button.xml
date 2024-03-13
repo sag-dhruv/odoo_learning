@@ -1,0 +1,37 @@
+<odoo>
+    <record id="sale_return_extend" model="ir.ui.view">
+        <field name="name">Sale Order Inherit fo sale Return</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <header>
+                <button name="sale_return_button"
+                        string="Return" class="oe_highlight"
+                        invisible="state != 'sale'"
+                        type="object"/>
+            </header>
+
+            <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                <button
+                        name="action_sale_return"
+                        icon="fa-repeat"
+                        type="object"
+                        invisible="return_count != 0"
+                        class="oe_stat_button">
+                    <field name="return_count" widget="statinfo" string="Return"/>
+                </button>
+            </xpath>
+
+
+            <!--            <xpath expr="/form/sheet/group/group/field[@name='partner_ref']" position="after">-->
+            <!--                 <field name="qty_done"/> -->
+            <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_uom_qty']"
+                   position="after">
+                <field name="sale_products" string="Sale" readonly="0" force_save="1"/>
+                <field name="return_products" string="Return" readonly="1" force_save="1"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

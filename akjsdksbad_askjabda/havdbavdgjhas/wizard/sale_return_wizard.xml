@@ -1,0 +1,44 @@
+<odoo>
+    <record id="sale_return_related_wizard" model="ir.ui.view">
+        <field name="name">sale.return.wizard.view</field>
+        <field name="model">sale.return.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Sale Return">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" readonly="1"/>
+                            <field name="reason" required="1"/>
+                        </group>
+                        <group>
+                            <field name="return_date" required="1"/>
+                            <field name="user_name" required="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Return Products">
+                            <field name="return_lines" readonly="0">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="onhand_qty" readonly="1"/>
+                                    <field name="replace_qty"/>
+                                    <field name="qty"/>
+                                    <field name="price_unit"/>
+                                    <field name="price_subtotal" widget="monetary"/>
+                                    <field name="total_return" invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button name="tick_ok" type='object' string="Submit" class="oe_highlight" icon="fa-check-circle"/>
+                    <button name="tick_cancel" type='object' string="Cancel" class="oe_highlight" special="cancel"
+                            icon="fa-times-circle"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

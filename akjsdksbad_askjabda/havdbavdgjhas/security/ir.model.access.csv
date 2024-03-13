@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sale_return_wizard,sale.return.wizard,model_sale_return_wizard,,1,1,1,1
+access_sale_return_wizard_line,sale.return.wizard.line,model_sale_return_wizard_line,,1,1,1,1
+access_sale_return_order,sale.return.order,model_sale_return_order,,1,1,1,1
+access_sale_return_order_line,sale.return.order.line,model_sale_return_order_line,,1,1,1,1

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="sale_order_lines_wizard_form" model="ir.ui.view">
+        <field name="name">Return lines</field>
+        <field name="model">sale.order.return.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+<!--                            <field name="sale_order_id" invisible="1"/>-->
+                            <field name="partner_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="return_reason"/>
+
+                        </group>
+                        <group>
+                            <field name="return_date"/>
+                            <field name="user_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Return Products">
+                            <field name="sale_order_return_lines" readonly="0">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="quantity"/>
+                                    <field name="onhand_qty" readonly="1"/>
+                                    <field name="replace_qty"/>
+                                    <field name="qty"/>
+                                    <field name="price_unit"/>
+                                    <field name="price_subtotal" widget="monetary"/>
+                                    <field name="total_return" invisible="1"/>
+                                </tree>
+
+                            </field>
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button name="create_return_order" string="Submit" type="object" class="btn-primary"
+                                data-hotkey="q"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="act_sale_order_return_wizard" model="ir.actions.act_window">
+        <field name="name">Sale Return</field>
+        <field name="res_model">sale.order.return.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>
