@@ -13,8 +13,8 @@ class SaleOrder(models.Model):
 
     def action_sale_return(self):
         self.sudo().ensure_one()
-        form_view = self.sudo().env.ref('cit_sale_return_development.sale_return_form_view')
-        tree_view = self.sudo().env.ref('cit_sale_return_development.sale_return_tree_view')
+        form_view = self.sudo().env.ref('app_development.sale_return_form_view')
+        tree_view = self.sudo().env.ref('app_development.sale_return_tree_view')
         return {
             'name': _('Return Sale Order'),
             'res_model': 'sale.return.order',
